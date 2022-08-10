@@ -2,30 +2,44 @@
 #include <stdio.h>
 #include <stddef.h>
 #include "main.h"
+#define BUFSIZE 64
 /**
- *main - _strtok tokenizer
+ *_strtok - _strtok tokenizer
  *@line: string buffer
- *Return: char pointer
+ *Return: char pointer to pointer
  */
-char *_strtok(char *line)
+char **_strtok(char *line)
 {
-	char *delim = " ";
+	char *delim = " \t\r\n\a";
 	char *str;
 	char *token;
+	int bufsize = BUFSIZE;
+	char **tokens = malloc(bufsize * sizeof(char *));
 	int i = 0;
 
 	if (line == NULL)
 	{
 		printf("line is null");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	for (str = line; ; str = NULL)
 	{
 		token = strtok(str, delim);
 		if (token == NULL)
 			break;
-		if (++i == 1)
-			break;
+		tokens[i] = token;
+		i++;
+		if (i >= bufsize)
+		{
+			bufsize += BUFSIZE;
+			tokens = realloc(tokens, bufsize * sizeof(char *));
+			if (!tokens)
+			{
+				fprintf(stderr, "error memory re-allocation");
+				exit(EXIT_FAILURE);
+			}
+		}
 	}
-	return (token);
+	tokens[i] = NULL;
+	return (tokens);
 }

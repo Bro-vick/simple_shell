@@ -11,7 +11,6 @@ char *_getline(void)
 	size_t n = 0;
 	int i;
 	size_t nread;
-	char *line;
 
 	printf("$");
 	while ((nread = getline(&lineptr, &n, stdin)) == -1)
@@ -24,7 +23,5 @@ char *_getline(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	line = lineptr;
-	free(lineptr);
-	return (line);
+	return (lineptr);
 }
