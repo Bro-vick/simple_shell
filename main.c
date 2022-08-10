@@ -1,0 +1,18 @@
+#include "main.h"
+/**
+ * main - main function
+ * @argc: integer numb of argument
+ * @argv: list of argument
+ * Return: success or failure
+ */
+int main(int argc, char **argv)
+{
+  // Load config files, if any.
+
+  // Run command loop.
+  lsh_loop();
+
+  // Perform any shutdown/cleanup.
+
+  return EXIT_SUCCESS;
+}
