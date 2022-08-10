@@ -3,14 +3,13 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 /**
- * main - load the command to
- * execute
+ * execute - load the command to execute
  * @argv: arguments
  * @envp: environment variables
  * @argc: integer
  * Return: integer value 0 success
  */
-int main(int argc, char *argv[], char *envp[])
+int execute(int argc, char **argv, char **envp)
 {
 	pid_t child_pid, wpid;
 	int status;
@@ -36,11 +35,10 @@ int main(int argc, char *argv[], char *envp[])
 		exit(EXIT_FAILURE);
 	}
 	else
-{
+	{
 		do {
 			wpid = waitpid(child_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	printf("envp-> \n %s \n", envp[0]);
 	return (0);
 }

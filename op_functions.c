@@ -7,13 +7,19 @@
 int lsh_cd(char **args)
 {
 	if (args[1] == NULL)
+	{
 		fprintf(stderr, "lsh: expected argument to \"cd\"\n");
+		exit(EXIT_FAILURE);
+	}
 	else
 	{
 		if (chdir(args[1]) != 0)
-			perror("lsh");
+		{
+			perror("cd");
+			exit(EXIT_FAILURE);
+		}
 	}
-	return (1);
+	return (0);
 }
 /**
  * lsh_help - help function
@@ -28,7 +34,7 @@ int lsh_help(char **args)
 	printf("Type program names and arguments, and hit enter.\n");
 	printf("The following are built in:\n");
 	printf("Use the man command for information on other programs.\n");
-	return (1);
+	return (0);
 }
 /**
  * lsh_exit - exit function

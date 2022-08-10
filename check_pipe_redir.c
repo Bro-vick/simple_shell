@@ -1,14 +1,14 @@
 #include "main.h"
 /**
- * isWildcard - wildcard function
+ * isPipe - Pipe or redirection function
  * @args: list of char pointers
  * Return: booleen
  */
-bool isWildcard(char **args)
+bool isPipe_redir(char **args)
 {
 	int i = 1;
 	char *token;
-	char *wildca = "*$?";
+	char *wildca ="|><";
 
 	if (args == NULL)
 		exit(EXIT_FAILURE);

@@ -7,6 +7,8 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <stdbool.h>
+bool isPipe_redir(char **args);
+int execute(int argc, char **argv, char **envp);
 bool isWildcard(char **args);
 typedef struct ops
 {

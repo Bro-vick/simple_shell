@@ -7,7 +7,7 @@
  */
 int (*get_op_func(const char *s))(char **)
 {
-	int i;
+	int i, p, k = 0;
 	op_t ops[] = {
 		{"cd", lsh_cd},
 		{"help", lsh_help},
@@ -18,7 +18,12 @@ int (*get_op_func(const char *s))(char **)
 	i = 0;
 	while (ops[i].op != NULL)
 	{
-		if (s == ops[i].op)
+		for (p = 0; s[p] != '\0'; p++)
+		{
+			if (s[p] == *(ops[i].op + p))
+				k++;
+		}
+		if (k == p)
 			return (ops[i].func);
 		i++;
 	}
