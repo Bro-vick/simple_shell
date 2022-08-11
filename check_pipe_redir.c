@@ -6,7 +6,7 @@
  */
 bool isPipe_redir(char **args)
 {
-	int i = 1;
+	int i = 1,k ,p;
 	char *token;
 	char *wildca ="|><";
 
@@ -15,9 +15,9 @@ bool isPipe_redir(char **args)
 	while (args[i])
 	{
 		token = args[i];
-		for (int k = 0; token[k] != '\0'; k++)
+		for (k = 0; token[k] != '\0'; k++)
 		{
-			for (int p = 0; wildca[p] != '\0'; p++)
+			for (p = 0; wildca[p] != '\0'; p++)
 			{
 				if (token[k] == wildca[p])
 					return (true);

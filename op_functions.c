@@ -26,10 +26,8 @@ int lsh_cd(char **args)
  * @args: the argument to cd
  * Return: integer
 */
-int lsh_help(char **args)
+int lsh_help(char __attribute__ ((unused)) **args)
 {
-	int i;
-
 	printf("Stephen Brennan's LSH\n");
 	printf("Type program names and arguments, and hit enter.\n");
 	printf("The following are built in:\n");
@@ -41,7 +39,7 @@ int lsh_help(char **args)
  * @args: the argument to exit
  * Return: integer
 */
-int lsh_exit(char **args)
+int lsh_exit(char __attribute__ ((unused)) **args)
 {
 	return (0);
 }

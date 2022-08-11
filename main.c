@@ -6,7 +6,7 @@
  * @envp: environment variable
  * Return: success or failure
  */
-int main(int argc, char *argv[], char *envp[])
+int main(int __attribute__ ((unused)) argc, char __attribute__ ((unused)) *argv[], char *envp[])
 {
 	char *line;
 	struct stat st;
@@ -17,7 +17,7 @@ int main(int argc, char *argv[], char *envp[])
 	int (*func)(char **);
 
 	line = _getline();	/* returns the read lines */
-	if (getline == NULL)
+	if (line == NULL)
 	{
 		printf("getline returned NULL");
 		exit(EXIT_FAILURE);
@@ -36,21 +36,27 @@ int main(int argc, char *argv[], char *envp[])
 	command = tokens[0];
 	for (p = 0; tokens[p] != NULL; p++)	/* get length of tokens */
 		;
+	--p;
 	func = get_op_func(command); /* builtins functions returned */
 	if (func)
 	{
 		isPiped = isPipe_redir(tokens); /* please handle if piped */
+		if (isPiped)
+		{
+			/* pass in the piped function */
+		}
 		func(tokens);
 	}
 	else if (stat(command, &st) == 0 && st.st_mode & S_IXUSR)
 	{
 		isPiped = isPipe_redir(tokens); /* please handle if piped */
-		execute(--p, tokens, envp); /*condition above check exec file*/
+		execute(p, tokens, envp); /*condition above check exec file*/
 	}
 	else
 	{
 		printf("command doesn't exist %s \n", command);
 		exit(EXIT_FAILURE);
 	}
+	main(p, tokens, envp);
 	return (EXIT_SUCCESS);
 }

@@ -11,7 +11,7 @@
  */
 int execute(int argc, char **argv, char **envp)
 {
-	pid_t child_pid, wpid;
+	pid_t child_pid;
 	int status;
 
 	if (argc < 1)
@@ -37,7 +37,7 @@ int execute(int argc, char **argv, char **envp)
 	else
 	{
 		do {
-			wpid = waitpid(child_pid, &status, WUNTRACED);
+			waitpid(child_pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	return (0);

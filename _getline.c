@@ -9,8 +9,7 @@ char *_getline(void)
 {
 	char *lineptr = NULL;
 	size_t n = 0;
-	int i;
-	size_t nread;
+	ssize_t nread;
 
 	printf("$");
 	while ((nread = getline(&lineptr, &n, stdin)) == -1)
