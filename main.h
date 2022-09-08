@@ -10,6 +10,9 @@
 bool isPipe_redir(char **args);
 int execute(int argc, char **argv, char **envp);
 bool isWildcard(char **args);
+void errormessage(char *s);
+void shell_loop(char **envp);
+int shell_execute(char **tokens, char **envp);
 typedef struct ops
 {
 	char *op;

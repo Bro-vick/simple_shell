@@ -11,7 +11,6 @@ char *_getline(void)
 	size_t n = 0;
 	ssize_t nread;
 
-	printf("$");
 	while ((nread = getline(&lineptr, &n, stdin)) == -1)
 	{
 		if (feof(stdin))
