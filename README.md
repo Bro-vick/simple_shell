@@ -281,6 +281,11 @@ $ echo $NAME
 $
 ```
 
+## Authors :black_nib:
+
+* Isaac Baccah <[isaacbaccah](https://github.com/isaacbaccah)>
+* Liliyosa <[liliyosa](https://github.com/liliyosa)>
+
 ## License :lock:
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
